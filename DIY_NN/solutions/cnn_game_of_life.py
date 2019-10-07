@@ -18,20 +18,20 @@ from keras.models import Model
 from keras.layers import Conv2D, Input
 
 # 權重
-def W(size):    
-    rtn = np.ones(shape=(3,3,1,4))
+def W(size, dtype='float32'):    
+    rtn = np.ones(shape=(3,3,1,4), dtype=dtype)
     rtn[1,1,0,2:] = 10
     return rtn
 
-def b(size):    
-    return np.array([-2,-3, -12,-13])
+def b(size, dtype='float32'):    
+    return np.array([-2,-3, -12,-13], dtype=dtype)
 
-def W2(size):
-    return np.array([1,-2,1,-2]).reshape(1,1,4,1)
+def W2(size, dtype='float32'):
+    return np.array([1,-2,1,-2], dtype=dtype).reshape(1,1,4,1)
 
-def b2(size):
+def b2(size, dtype='float32'):
     # just to be safe
-    return np.full(size, -0.5)
+    return np.full(size, -0.5, dtype=dtype)
 
 # 網路模型定義
 inputs = Input(shape=(None,None,1))
